@@ -37,6 +37,17 @@ function App() {
       return true;
     });
 
+    const addTodo = (text) =>{
+      if(text.trim() === "") return;
+      const newTodo = {
+        id: Date.now(),
+        text: text,
+        completed: false,
+      };
+      console.log(newTodo);
+      setTodos([...todos, newTodo]);
+    }
+
     const completedCount = todos.filter((todo)=> todo.completed).length;
     const pendingCount = todos.length - completedCount;
 
@@ -59,7 +70,7 @@ function App() {
                 </div>
 
                 <div className="card-body p-3 p-md-4">
-                  <TodoForm />
+                  <TodoForm addTodo={addTodo} />
 
                   <div className="row g-3 mt-1">
                     <div className="col-12 col-md-7">
