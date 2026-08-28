@@ -4,6 +4,7 @@ import FilterTodo from "./components/FilterTodo";
 import SearchBar from "./components/SearchBar";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -161,6 +162,7 @@ function App() {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
     </>
   );
