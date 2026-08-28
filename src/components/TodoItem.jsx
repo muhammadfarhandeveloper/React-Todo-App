@@ -1,4 +1,4 @@
-function TodoItem({todo}) {
+function TodoItem({todo,deleteTodo}) {
   return (
     <div className="list-group-item p-3 todo-item">
       <div className="d-flex align-items-center gap-3">
@@ -26,7 +26,7 @@ function TodoItem({todo}) {
 
         <button
           className="btn btn-outline-danger btn-sm"
-          
+          onClick={()=> deleteTodo(todo.id)}
           title="Delete task"
         >
           <i className="bi bi-trash"></i>

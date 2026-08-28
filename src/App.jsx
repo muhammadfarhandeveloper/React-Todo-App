@@ -48,6 +48,10 @@ function App() {
       setTodos([...todos, newTodo]);
     }
 
+    const deleteTodo = (id)=>{
+       setTodos(todos.filter((todo)=> todo.id !== id))
+    }
+
     const completedCount = todos.filter((todo)=> todo.completed).length;
     const pendingCount = todos.length - completedCount;
 
@@ -116,7 +120,7 @@ function App() {
                     </div>
                   </div>
 
-                  <TodoList todos={filterTodos} />
+                  <TodoList todos={filterTodos} deleteTodo={deleteTodo} />
                 </div>
 
                 <div className="card-footer bg-white border-0 p-3 p-md-4">
