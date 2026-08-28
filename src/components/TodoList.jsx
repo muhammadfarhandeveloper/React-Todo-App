@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem"
 
 
-function TodoList({todos,deleteTodo}) {
+function TodoList({todos,deleteTodo,toggleTodo}) {
 
   if(todos.length === 0 ){
      return (
@@ -26,6 +26,7 @@ function TodoList({todos,deleteTodo}) {
           key={todo.id}
           todo={todo}
           deleteTodo={deleteTodo}
+          toggleTodo={toggleTodo}
         />
       ))}
     </div>

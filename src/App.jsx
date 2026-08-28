@@ -56,6 +56,14 @@ function App() {
       setTodos(todos.filter((todo)=> !todo.completed));
     }
 
+    const toggleTodo = (id)=>{
+      setTodos(
+        todos.map((todo)=> 
+          todo.id === id ? {...todo,completed: !todo.completed} : todo
+        )
+      );
+    }
+
     const completedCount = todos.filter((todo)=> todo.completed).length;
     const pendingCount = todos.length - completedCount;
 
@@ -124,7 +132,7 @@ function App() {
                     </div>
                   </div>
 
-                  <TodoList todos={filterTodos} deleteTodo={deleteTodo} />
+                  <TodoList todos={filterTodos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
                 </div>
 
                 <div className="card-footer bg-white border-0 p-3 p-md-4">

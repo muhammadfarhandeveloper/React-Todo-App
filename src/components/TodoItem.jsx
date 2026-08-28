@@ -1,4 +1,4 @@
-function TodoItem({todo,deleteTodo}) {
+function TodoItem({todo,deleteTodo,toggleTodo}) {
   return (
     <div className="list-group-item p-3 todo-item">
       <div className="d-flex align-items-center gap-3">
@@ -6,6 +6,7 @@ function TodoItem({todo,deleteTodo}) {
           type="checkbox"
           className="form-check-input flex-shrink-0"
           checked={todo.completed}
+          onChange={()=> toggleTodo(todo.id)}
         />
 
         <span
