@@ -85,6 +85,7 @@ function App() {
             <div className="col-12 col-lg-9 col-xl-8">
               <div className="card shadow-lg border-0 todo-card">
                 <div className="card-header text-center py-4">
+                    <img src="tpslogo.jpg" width="40" height="40" alt="The Providers" />
                   <h1 className="mb-2 fw-bold">
                     <i className="bi bi-check2-square me-2"></i>
                     My Todo App
