@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import FilterTodo from "./components/FilterTodo";
 import SearchBar from "./components/SearchBar";
@@ -5,6 +6,37 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      text: "Learn React Components",
+      completed: true,
+    },
+    {
+      id: 2,
+      text: "Practice Props and State",
+      completed: false,
+    },
+    {
+      id: 3,
+      text: "Build a Todo App",
+      completed: false,
+    },
+  ]);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filter, setFilter] = useState("all");
+
+  const filterTodos = todos
+    .filter((todo) =>
+      todo.text.toLowerCase().includes(searchTerm.toLowerCase().trim()),
+    )
+    .filter((todo) => {
+      if (filter === "completed") return todo.completed;
+      if (filter === "pending") return !todo.completed;
+      return true;
+    });
+
   return (
     <>
       <div className="min-vh-100 todo-page py-3 py-md-4">
@@ -28,11 +60,14 @@ function App() {
 
                   <div className="row g-3 mt-1">
                     <div className="col-12 col-md-7">
-                      <SearchBar />
+                      <SearchBar
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                      />
                     </div>
 
                     <div className="col-12 col-md-5">
-                      <FilterTodo />
+                      <FilterTodo filter={filter} setFilter={setFilter} />
                     </div>
                   </div>
 
@@ -67,7 +102,7 @@ function App() {
                     </div>
                   </div>
 
-                  <TodoList />
+                  <TodoList todos={filterTodos} />
                 </div>
 
                 <div className="card-footer bg-white border-0 p-3 p-md-4">
