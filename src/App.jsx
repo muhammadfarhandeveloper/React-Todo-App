@@ -37,6 +37,9 @@ function App() {
       return true;
     });
 
+    const completedCount = todos.filter((todo)=> todo.completed).length;
+    const pendingCount = todos.length - completedCount;
+
   return (
     <>
       <div className="min-vh-100 todo-page py-3 py-md-4">
@@ -76,7 +79,7 @@ function App() {
                       <div className="card border-primary h-100">
                         <div className="card-body p-3">
                           <small className="text-muted d-block">Total</small>
-                          <h4 className="mb-0 text-primary">5</h4>
+                          <h4 className="mb-0 text-primary">{todos.length}</h4>
                         </div>
                       </div>
                     </div>
@@ -87,7 +90,7 @@ function App() {
                           <small className="text-muted d-block">
                             Completed
                           </small>
-                          <h4 className="mb-0 text-success">2</h4>
+                          <h4 className="mb-0 text-success">{completedCount}</h4>
                         </div>
                       </div>
                     </div>
@@ -96,7 +99,7 @@ function App() {
                       <div className="card border-warning h-100">
                         <div className="card-body p-3">
                           <small className="text-muted d-block">Pending</small>
-                          <h4 className="mb-0 text-warning">1</h4>
+                          <h4 className="mb-0 text-warning">{pendingCount}</h4>
                         </div>
                       </div>
                     </div>
@@ -107,7 +110,7 @@ function App() {
 
                 <div className="card-footer bg-white border-0 p-3 p-md-4">
                   <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-                    <span className="text-muted">1 task remaining</span>
+                    <span className="text-muted">{pendingCount} task{pendingCount != 1 ? "s" : ""} remaining</span>
 
                     <button className="btn btn-outline-danger">
                       <i className="bi bi-trash me-2"></i>
