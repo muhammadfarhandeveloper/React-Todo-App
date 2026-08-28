@@ -52,6 +52,10 @@ function App() {
        setTodos(todos.filter((todo)=> todo.id !== id))
     }
 
+    const clearCompleted = ()=>{
+      setTodos(todos.filter((todo)=> !todo.completed));
+    }
+
     const completedCount = todos.filter((todo)=> todo.completed).length;
     const pendingCount = todos.length - completedCount;
 
@@ -127,7 +131,8 @@ function App() {
                   <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                     <span className="text-muted">{pendingCount} task{pendingCount != 1 ? "s" : ""} remaining</span>
 
-                    <button className="btn btn-outline-danger">
+                    <button className="btn btn-outline-danger"
+                    onClick={clearCompleted} >
                       <i className="bi bi-trash me-2"></i>
                       Clear Completed
                     </button>
