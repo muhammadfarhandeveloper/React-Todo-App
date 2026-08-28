@@ -2,7 +2,7 @@ function TodoForm() {
   return (
     <div>
       <form>
-        <div className="input-group input-group-lg">
+        <div className="input-group ">
           <input
             type="text"
             className="form-control"
