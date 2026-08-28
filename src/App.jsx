@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import FilterTodo from "./components/FilterTodo";
 import SearchBar from "./components/SearchBar";
@@ -6,7 +6,8 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([
+
+  const defaultTodos = [
     {
       id: 1,
       text: "Learn React Components",
@@ -22,7 +23,16 @@ function App() {
       text: "Build a Todo App",
       completed: false,
     },
-  ]);
+  ]
+
+  const [todos, setTodos] = useState(()=>{
+    const storedTodos = localStorage.getItem("todos");
+    return storedTodos ? JSON.parse(storedTodos) : defaultTodos;
+  });
+
+  useEffect(()=>{
+    localStorage.setItem("todos", JSON.stringify(todos));
+  },[todos]);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("all");
